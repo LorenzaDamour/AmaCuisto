@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container interesse">
+      <h1 class="text-center">Personnes intéressées</h1>
+      <table class="table">
+    <thead>
+      <tr>
+        <th>Nom de l'atelier</th>
+        <th>Date</th>
+        <th>Heure</th>
+        <th>Choix</th>
+      </tr>
+    </thead>
+      <tbody>
+
+      {% for atelier in ateliers %}
+
+      {% for item in atelier.participations %}
+
+        <tr>
+    <td>{{item.atelier.nom}}</td>
+    <td>{{item.date|date("m/d/Y")}}</td>
+    <td>{{item.heure|date("h:i:s")}}</td>
+
+
+<td><div class="col-md-3">
+      <a href="{{ path ('atelier_accepte', {'id' : atelier.id, 'atelierId':atelier.id }) }}" class="accepter"><i class="fa fa-check" aria-hidden="true"></i> Accepter</a>|
+      <a href="{{ path ('atelier_refuse', {'id' : atelier.id, 'atelierId':atelier.id }) }}" class="accepter"><i class="fa fa-check" aria-hidden="true"></i> Refuser </a></td>
+    </div>
+  </tr>
+
+      {% endfor %}
+
+
+
+
+{% endfor %}
+</tbody>
+</table>
+
+</div>
+
+
+{% endblock %}

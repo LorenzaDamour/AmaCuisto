@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container m-t-3 p-t-1">
+        <h1 class="p-b-1">Objet obtenue</h1>
+
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Nom de l'objet</th>
+              >
+            </tr>
+            </thead>
+            <tbody>
+            {% for choix2 in choix %}
+                <tr>
+                    <td>{{choix2.atelier.nom}}</td>
+
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
