@@ -38,14 +38,14 @@ class Participation
     private $heure;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Users", inversedBy="Participation")
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="participation")
       * @ORM\JoinColumn(name="users_id", referencedColumnName="id")
      */
 
      private $user;
 
      /**
- * @ORM\ManyToOne(targetEntity="Atelier", inversedBy="participations")
+ * @ORM\ManyToOne(targetEntity="Atelier", inversedBy="participation")
  */
 
  private $atelier;

@@ -32,7 +32,7 @@ class StatutAtelier
         /**
         * @ORM\ManyToOne(targetEntity="Users", inversedBy="statut")
         */
-        private $users;
+        private $user;
         /**
         * @ORM\ManyToOne(targetEntity="Atelier", inversedBy="statut")
         */

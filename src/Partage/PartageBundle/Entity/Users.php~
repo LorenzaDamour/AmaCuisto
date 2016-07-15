@@ -67,7 +67,7 @@ class Users extends BaseUser
 
          private $participation;
       /**
- * @ORM\OneToMany(targetEntity="StatutAtelier", mappedBy="users")
+ * @ORM\OneToMany(targetEntity="StatutAtelier", mappedBy="user")
  */
 
  private $statut;
