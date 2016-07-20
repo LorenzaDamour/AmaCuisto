@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section id="newAtelier">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+
+        {{ form_start(form) }}
+        <div class="form-group">
+          {{ form_label(form.nom) }}
+          {{ form_widget(form.nom, {'attr': {'class':'form-control'}}) }}
+          {{ form_errors(form.nom) }}
+        </div>
+
+        <div class="form-group">
+          {{ form_label(form.equipements) }}
+          {{ form_widget(form.equipements, {'attr': {'class':'form-control'}}) }}
+          {{ form_errors(form.equipements) }}
+        </div>
+
+        <div class="form-group">
+          {{ form_label(form.ingredients) }}
+          {{ form_widget(form.ingredients, {'attr': {'class':'form-control'}}) }}
+          {{ form_errors(form.ingredients) }}
+        </div>
+
+        <div class="form-group">
+          {{ form_label(form.tarif) }}
+          {{ form_widget(form.tarif, {'attr': {'class':'form-control'}}) }}
+          {{ form_errors(form.tarif) }}
+        </div>
+
+        <div class="text-center">
+          <input id="envoyer" type="submit" value="Créer" />
+        </div>
+        {{ form_end(form) }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

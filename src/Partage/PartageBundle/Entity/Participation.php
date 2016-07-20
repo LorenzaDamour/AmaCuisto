@@ -4,6 +4,7 @@ namespace Partage\PartageBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Participation
  *

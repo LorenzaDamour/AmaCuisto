@@ -48,7 +48,12 @@ class Atelier
      * @ORM\Column(name="Tarif", type="string", length=255)
      */
     private $tarif;
-
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="available", type="boolean")
+     */
+    private $available;
 
     /**
      * @ORM\ManyToOne(targetEntity="Users", inversedBy="atelier")
@@ -355,5 +360,29 @@ class Atelier
     public function getParticipations()
     {
         return $this->participations;
+    }
+
+    /**
+     * Set available
+     *
+     * @param boolean $available
+     *
+     * @return Atelier
+     */
+    public function setAvailable($available)
+    {
+        $this->available = $available;
+
+        return $this;
+    }
+
+    /**
+     * Get available
+     *
+     * @return boolean
+     */
+    public function getAvailable()
+    {
+        return $this->available;
     }
 }

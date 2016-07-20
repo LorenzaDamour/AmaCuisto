@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<section id="showAtelier">
+  <div class="container">
+
+        <h1 class="text-center">Liste des ateliers</h1>
+        <table class="table">
+               <thead class="thead-inverse">
+               <tr>
+                   <th>Nom de l'atelier</th>
+                   <th>Equipements</th>
+                   <th>Ingrédients</th>
+                   <th>Tarif</th>
+                   <th>Participer</th>
+               </tr>
+               </thead>
+               <tbody>
+
+{% for atelier in atelier %}
+<tr>
+
+    <td>{{ atelier.nom }}</td>
+
+    <td>{{ atelier.equipements }}</td>
+
+    <td>{{ atelier.ingredients }}</td>
+
+    <td>{{ atelier.tarif}}</td>
+
+
+  <td><a href= "{{ path ('participation_new' ,{'id': atelier.id}) }}"><input type="button" name="name" value="participer"></a></td>
+</tr>
+
+
+{% endfor %}
+
+</tbody>
+</table>
+</div>
+</div>
+
+</section>
+{% endblock %}

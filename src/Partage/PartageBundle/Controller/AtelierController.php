@@ -29,7 +29,7 @@ class AtelierController extends Controller
    $atelier = $em->getRepository('PartagePartageBundle:Atelier')->findAll();
    $user = $this->getUser();
 
-     return $this->render('atelier/indexAtelier.html.twig', array(
+     return $this->render('PartagePartageBundle:atelier:indexAtelier.html.twig', array(
        'atelier' => $atelier,
      ));
 
@@ -46,30 +46,31 @@ class AtelierController extends Controller
      $atelier = new Atelier();
      $form = $this->createForm('Partage\PartageBundle\Form\AtelierType', $atelier);
      $form->handleRequest($request);
-     $userId = $this->getUser();
-     $userId->getId();
-     $atelier->setUser($userId);
+     $user = $this->getUser();
+     $user->getId();
+     $atelier->setUser($user);
      if ($form->isSubmitted() && $form->isValid()) {
+      $atelier->setAvailable(true);
        $em = $this->getDoctrine()->getManager();
        $em->persist($atelier);
        $em->flush();
        return $this->redirectToRoute('atelier_index');
      }
-     return $this->render('atelier/new.html.twig', array(
+     return $this->render('PartagePartageBundle:atelier:new.html.twig', array(
        'atelier' => $atelier,
        'form' => $form->createView(),
      ));
    }
 
    /**
-  * @Route("/atelier/accepte/{id}/{atelierId}", name="atelier_accepte")
+  * @Route("/atelier/accepte/{id}", name="atelier_accepte")
   * @Method("GET")
 * le cuisinier accepte
   */
-  public function atelierAccepteAction($id, Request $request, Atelier $atelier, $atelierId)
+  public function atelierAccepteAction(Request $request, Atelier $atelier)
   {
     $statut = new StatutAtelier();
-    $user = $this->getDoctrine()->getManager()->getRepository('PartagePartageBundle:Users')->find($atelierId);
+    $user = $this->getDoctrine()->getManager()->getRepository('PartagePartageBundle:Users')->find($atelier->getId());
     $statut->setUser($user);
     $statut->setStatut('Accepte');
     $statut->setAtelier($atelier);
@@ -77,25 +78,29 @@ class AtelierController extends Controller
     $userId = $this->getUser();
     $userId->getId();
     $statut->setUser($userId);
-    $atelier= $this->getDoctrine()->getRepository(Atelier::class)->find($id);
     $statut->setAtelier($atelier);
+    $atelier->setAvailable(false);
 
     $em = $this->getDoctrine()->getManager();
     $em->persist($statut);
+    $em->persist($atelier);
+
     $em->flush();
     return $this->render('PartagePartageBundle:Default:atelierAccepte.html.twig',  array('id' => $atelier->getId()
   ));
 }
 
+
+
 /**
-* @Route("/atelier/refuse/{id}/{atelierId}", name="atelier_refuse")
+* @Route("/atelier/refuse/{id}", name="atelier_refuse")
 * @Method("GET")
 * Le particulier refuse l'atelier
 */
-public function atelierRefuseAction($id, Request $request, Atelier $atelier, $atelierId)
+public function atelierRefuseAction(Request $request, Atelier $atelier)
 {
   $statut = new StatutAtelier();
-  $user = $this->getDoctrine()->getManager()->getRepository('PartagePartageBundle:Users')->find($atelierId);
+  $user = $this->getDoctrine()->getManager()->getRepository('PartagePartageBundle:Users')->find($atelier->getId());
   $statut->setUser($user);
   $statut->setStatut('Refuse');
   $statut->setAtelier($atelier);
@@ -103,7 +108,6 @@ public function atelierRefuseAction($id, Request $request, Atelier $atelier, $at
   $userId = $this->getUser();
   $userId->getId();
   $statut->setUser($userId);
-  $atelier= $this->getDoctrine()->getRepository(Atelier::class)->find($id);
   $statut->setAtelier($atelier);
 
   $em = $this->getDoctrine()->getManager();
@@ -113,25 +117,7 @@ public function atelierRefuseAction($id, Request $request, Atelier $atelier, $at
     'id' => $atelier->getId(),
   ));
 }
-   /**
-* Finds and displays a Atelier entity.
-*
-* @Route("/{id}", name="atelier_show")
-* @Method("GET")
-*/
-public function showAction(Atelier $atelier)
-{
 
-  $deleteForm = $this->createDeleteForm($atelier);
-  $userId = $this->getUser();
-  $userId->getId();
-    $atelier->addAssisteAtelier($userId);
-    $em = $this->getDoctrine()->getManager();
-    $em->persist($atelier);
-    $em->flush();
-    return $this->render('atelier/atelierInteresse.html.twig',  array('id' => $atelier->getId()));
-
-  }
 
 
   /**
@@ -167,6 +153,22 @@ private function createDeleteForm(Atelier $atelier)
   ->getForm()
   ;
 }
+/**
+     * @Route("/accept/", name="accept")
+     */
+    public function choixCuisinier()
+    {
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $choix = $em->getRepository('PartagePartageBundle:StatutAtelier')
+            ->findBy(array('user' => $user, 'statut' => 'Accepte'));
+        return $this->render(
+            'PartagePartageBundle:atelier:accept.html.twig',
+            array(
+                'choix' => $choix,
+            )
+        );
+    }
 
 
 }

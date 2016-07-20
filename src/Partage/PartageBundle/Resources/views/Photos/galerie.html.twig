@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{% for photos in galeriephoto %}
+<img src="images/products/{{photos.imageName}}"/>
+{% endfor %}
+
+
+{% endblock %}

@@ -27,25 +27,30 @@ class ParticipationController extends Controller
   $participation = new Participation();
   $form = $this->createForm('Partage\PartageBundle\Form\ParticipationType', $participation);
   $form->handleRequest($request);
-  $userId = $this->getUser();
-  $userId->getId();
-  $participation->setUser($userId);
+  $user = $this->getUser();
+  $user->getId();
+  $participation->setUser($user);
   $atelier= $this->getDoctrine()->getRepository(Atelier::class)->find($id);
-  $participation->setUser($userId);
+  $participation->setUser($user);
   $participation->setAtelier($atelier);
+
+
 
   if ($form->isSubmitted() && $form->isValid()) {
     $em = $this->getDoctrine()->getManager();
     $em->persist($participation);
     $em->flush();
-    return $this->render('atelier/atelierInteresse.html.twig',  array('id' => $atelier->getId()));
+    return $this->render('PartagePartageBundle:atelier:atelierInteresse.html.twig',  array('id' => $atelier->getId()));
   }
-  return $this->render('participation/participation.html.twig', array(
+  return $this->render('PartagePartageBundle:participation:participation.html.twig', array(
     'participation' => $participation,
     'form' => $form->createView(),
   ));
 
 }
+
+
+
 
 
 }
