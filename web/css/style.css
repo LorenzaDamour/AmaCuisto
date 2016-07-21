@@ -26,13 +26,16 @@ section.atelier {
 }
 
 .container.interesse {
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
-
+.erreur {
+    margin-top: 70px;
+    color: red;
+}
 
 .container.ateliers {
-    margin-top: 50px;
+    margin-top: 100px;
    }
 
 .fos_user_user_show {
@@ -63,4 +66,8 @@ section.atelier {
  .rating a:focus ~ a {
     color: orange;
     cursor: pointer;
+ }
+
+ i.fa.fa-trash{
+   font-size: 30px;
  }

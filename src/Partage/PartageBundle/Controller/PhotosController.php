@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class PhotosController extends Controller
 {
-  
+
     /**
      * @Route("/galerie")
      */
@@ -65,5 +65,38 @@ class PhotosController extends Controller
 
 
     }
+    /**
+    * Deletes a Photos entity.
+    *
+    * @Route("/delete/{id}/", name="photos_delete")
+    * @Method({"GET","DELETE"})
+    */
+    public function deleteAction(Photos $photos)
+    {
+
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($photos);
+        $em->flush();
+
+      return $this->redirectToRoute('accueil');
+    }
+
+      /**
+    * Creates a form to delete a Atelier entity.
+    *
+    * @param Atelier $atelier The Atelier entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createDeleteForm(Photos $photos)
+    {
+      return $this->createFormBuilder()
+      ->setAction($this->generateUrl('photos_delete', array('id' => $photos->getId())))
+      ->setMethod('DELETE')
+      ->getForm()
+      ;
+    }
+
 
   }

@@ -30,10 +30,10 @@
     <td>{{item.heure|date("h:i:s")}}</td>
 
 
-<td><div class="col-md-3">
-      <a href="{{ path ('atelier_accepte', {'id' : atelier.id, 'atelierId':atelier.id }) }}" class="accepter"><i class="fa fa-check" aria-hidden="true"></i> Accepter</a>|
-      <a href="{{ path ('atelier_refuse', {'id' : atelier.id, 'atelierId':atelier.id }) }}" class="accepter"><i class="fa fa-check" aria-hidden="true"></i> Refuser </a></td>
-    </div>
+<td>
+      <a href="{{ path ('atelier_accepte', {'id' : atelier.id, 'atelierId':atelier.id }) }}" class="accepter"><i class="fa fa-check" aria-hidden="true"></i></a>
+      <a href="{{ path ('atelier_refuse', {'id' : atelier.id, 'atelierId':atelier.id }) }}" class="accepter"><i class="fa fa-times" aria-hidden="true"></i> </a></td>
+    
   </tr>
 
       {% endfor %}

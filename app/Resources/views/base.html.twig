@@ -5,6 +5,7 @@
          <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
+  <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
       {% endblock %}
@@ -21,17 +22,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><i class="fa fa-universal-access" aria-hidden="true"> </i>AmaCuisto</a>
+      <a class="navbar-brand" href="/">AmaCuisto</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
       {% if is_granted('ROLE_USER')%}  <li><a href="{{ path ('atelier_new') }}"><i class="fa fa-edit" aria-hidden="true"></i> Créer un atelier</a></li>
-      <li><a href="{{ path ('atelier_index') }}"><i class="fa fa-edit" aria-hidden="true"></i> Liste des ateliers</a></li>
-      <li><a href="/notif"><i class="fa fa-edit" aria-hidden="true"></i> Notifications</a></li>
-      <li><a href="{{ path ('accept') }}"><i class="fa fa-edit" aria-hidden="true"></i>Mes ateliers</a></li>
-            <li><a href="/galerie"><i class="fa fa-edit" aria-hidden="true"></i>Galerie</a></li>
+      <li><a href="{{ path ('atelier_index') }}"><i class="fa fa-list-ul" aria-hidden="true"></i> Liste des ateliers</a></li>
+      <li><a href="/notif"><i class="fa fa-bell" aria-hidden="true"></i></i> Notifications</a></li>
+      <li><a href="{{ path ('accept') }}"><i class="fa fa-cutlery" aria-hidden="true"></i> Mes ateliers</a></li>
+            <li><a href="/galerie"><i class="fa fa-camera" aria-hidden="true"></i> Galerie</a></li>
 
 
       {% endif %}

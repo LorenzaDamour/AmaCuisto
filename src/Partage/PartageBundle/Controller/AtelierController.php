@@ -20,7 +20,7 @@ class AtelierController extends Controller
   /**
  * Lists all Atelier entities.
  *
- * @Route("/atelier", name="atelier_index")
+ * @Route("/liste", name="atelier_index")
  * @Method("GET")
  */
  public function indexAction()
@@ -117,25 +117,47 @@ public function atelierRefuseAction(Request $request, Atelier $atelier)
   ));
 }
 
-
-
-  /**
-  * Deletes a Atelier entity.
-  *
-  * @Route("/{id}", name="atelier_delete")
-  * @Method("DELETE")
-  */
-  public function deleteAction(Request $request, Atelier $atelier)
-  {
-    $form = $this->createDeleteForm($atelier);
-    $form->handleRequest($request);
-    if ($form->isSubmitted() && $form->isValid()) {
-      $em = $this->getDoctrine()->getManager();
-      $em->remove($atelier);
-      $em->flush();
-    }
+/**
+* Displays a form to edit an existing Dons entity.
+*
+* @Route("/{id}/edit", name="atelier_edit")
+* @Method({"GET", "POST"})
+*/
+public function editAction(Request $request, Atelier $atelier)
+{
+  $deleteForm = $this->createDeleteForm($atelier);
+  $editForm = $this->createForm('Partage\PartageBundle\Form\AtelierType', $atelier);
+  $editForm->handleRequest($request);
+  if ($editForm->isSubmitted() && $editForm->isValid()) {
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($atelier);
+    $em->flush();
     return $this->redirectToRoute('accueil');
   }
+  return $this->render('PartagePartageBundle:atelier:edit.html.twig', array(
+    'atelier' => $atelier,
+    'edit_form' => $editForm->createView(),
+    'delete_form' => $deleteForm->createView(),
+  ));
+}
+
+
+/**
+* Deletes a Atelier entity.
+*
+* @Route("/delete/{id}/", name="atelier_delete")
+* @Method({"GET","DELETE"})
+*/
+public function deleteAction(Atelier $atelier)
+{
+
+
+    $em = $this->getDoctrine()->getManager();
+    $em->remove($atelier);
+    $em->flush();
+  
+  return $this->redirectToRoute('accueil');
+}
 
   /**
 * Creates a form to delete a Atelier entity.
@@ -152,6 +174,7 @@ private function createDeleteForm(Atelier $atelier)
   ->getForm()
   ;
 }
+
 /**
      * @Route("/accept/", name="accept")
      */

@@ -5,6 +5,8 @@
 {% for photoos in galeriephoto %}
 
 <img src="/images/products/{{photoos.imageName}}"style="width:200px; height:250px"/>
+<td><a href= "{{ path ('photos_delete' ,{'id': photoos.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+
 
 {% endfor %}
 </div>

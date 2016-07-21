@@ -33,7 +33,12 @@
     <td>{{ atelier.tarif}}</td>
 
 
-  <td><a href= "{{ path ('participation_new' ,{'id': atelier.id}) }}"><input type="button" name="name" value="participer"></a></td>
+  <td><a href= "{{ path ('participation_new' ,{'id': atelier.id}) }}"><input type="button" name="name" class="btn btn-success" value="participer"></a></td>
+
+    <td><a href= "{{ path ('atelier_edit' ,{'id': atelier.id}) }}"><input type="button" name="name" class="btn btn-danger" value="modifier"></a></td>
+
+    <td><a href= "{{ path ('atelier_delete' ,{'id': atelier.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+
 </tr>
 
 
