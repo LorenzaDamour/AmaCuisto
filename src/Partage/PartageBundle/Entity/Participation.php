@@ -21,9 +21,6 @@ class Participation
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-
-
     /**
      * @var date
      *
@@ -40,17 +37,15 @@ class Participation
 
     /**
      * @ORM\ManyToOne(targetEntity="Users", inversedBy="participation")
-      * @ORM\JoinColumn(name="users_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="users_id", referencedColumnName="id")
      */
 
-     private $user;
+    private $user;
 
-     /**
- * @ORM\ManyToOne(targetEntity="Atelier", inversedBy="participation")
- */
-
- private $atelier;
-
+  /**
+  * @ORM\ManyToOne(targetEntity="Atelier", inversedBy="participations")
+  */
+    private $atelier;
 
 
     /**
@@ -62,9 +57,6 @@ class Participation
     {
         return $this->id;
     }
-
-
-
 
 
     /**
@@ -194,7 +186,6 @@ class Participation
 
         return $this;
     }
-
 
 
     /**

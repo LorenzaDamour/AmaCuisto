@@ -29,14 +29,14 @@ class StatutAtelier
     private $statut;
 
 
-        /**
-        * @ORM\ManyToOne(targetEntity="Users", inversedBy="statut")
-        */
-        private $user;
-        /**
-        * @ORM\ManyToOne(targetEntity="Atelier", inversedBy="statut")
-        */
-        private $atelier;
+    /**
+     * @ORM\ManyToOne(targetEntity="Users", inversedBy="statut")
+     */
+    private $user;
+    /**
+     * @ORM\ManyToOne(targetEntity="Atelier", inversedBy="statut")
+     */
+    private $atelier;
 
     /**
      * Get id

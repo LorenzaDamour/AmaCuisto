@@ -57,21 +57,27 @@ class Atelier
 
     /**
      * @ORM\ManyToOne(targetEntity="Users", inversedBy="atelier")
-      * @ORM\JoinColumn(name="users_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="users_id", referencedColumnName="id")
      */
 
-     private $user;
+    private $user;
 
-     /**
-      * @ORM\OneToMany(targetEntity="Participation", mappedBy="atelier")
-       * @ORM\JoinColumn(name="participation_id", referencedColumnName="id")
-      */
 
-      private $participations;
   /**
- * @ORM\OneToMany(targetEntity="StatutAtelier", mappedBy="atelier")
- */
- private $statut;
+       * @ORM\OneToMany(targetEntity="Participation", mappedBy="atelier")
+        * @ORM\JoinColumn(name="participation_id", referencedColumnName="id")
+       */
+    private $participations;
+    /**
+     * @ORM\OneToMany(targetEntity="StatutAtelier", mappedBy="atelier")
+     */
+    private $statut;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Photos",mappedBy="atelier")
+     */
+    private $photos;
+
     /**
      * Get id
      *
@@ -269,7 +275,6 @@ class Atelier
     }
 
 
-
     /**
      * Set participation
      *
@@ -384,5 +389,39 @@ class Atelier
     public function getAvailable()
     {
         return $this->available;
+    }
+
+    /**
+     * Add photo
+     *
+     * @param \Partage\PartageBundle\Entity\Photos $photo
+     *
+     * @return Atelier
+     */
+    public function addPhoto(\Partage\PartageBundle\Entity\Photos $photo)
+    {
+        $this->photos[] = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Remove photo
+     *
+     * @param \Partage\PartageBundle\Entity\Photos $photo
+     */
+    public function removePhoto(\Partage\PartageBundle\Entity\Photos $photo)
+    {
+        $this->photos->removeElement($photo);
+    }
+
+    /**
+     * Get photos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPhotos()
+    {
+        return $this->photos;
     }
 }

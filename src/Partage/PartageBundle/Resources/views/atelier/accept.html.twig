@@ -4,10 +4,10 @@
     <div class="container ateliers">
         <h1 class="text-center">Ateliers</h1>
 
-        <table class="table">
+        <table class="table text-center">
             <thead class="thead-inverse">
             <tr>
-                <th>Nom de l'atelier</th>
+                <th class="text-center">Nom de l'atelier</th>
 
             </tr>
             </thead>
@@ -15,7 +15,7 @@
             {% for choix2 in choix %}
                 <tr>
                     <td>{{choix2.atelier.nom}}</td>
-                  
+
                 </tr>
 
             {% endfor %}

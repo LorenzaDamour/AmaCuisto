@@ -38,3 +38,29 @@ section.atelier {
 .fos_user_user_show {
        margin-top: 80px;
    }
+
+.liste {
+       margin-top: 60px;
+   }
+.imagesatelier
+ {
+       margin-top: 100px;
+ }
+
+ .rating {
+    direction: rtl;
+ }
+ .rating a {
+    float: right;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 3em;
+    transition: color .4s;
+ }
+ .rating a:hover,
+ .rating a:focus,
+ .rating a:hover ~ a,
+ .rating a:focus ~ a {
+    color: orange;
+    cursor: pointer;
+ }

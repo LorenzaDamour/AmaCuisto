@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<div class="imagesatelier">
+  <h1 class="text-center">Photos des ateliers </h1>
+{% for photoos in galeriephoto %}
+
+<img src="/images/products/{{photoos.imageName}}"style="width:200px; height:250px"/>
+
+{% endfor %}
+</div>
+<section id="formulaire">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+
+
+{{ form_start(form) }}
+
+      <div class="form-group">
+        {{ form_widget(form.imageFile) }}
+      </div>
+
+
+      <div>
+        <input type="submit" class="btn btn-success" value="Valider"/>
+      </div>
+    {{ form_end(form) }}
+</div>
+</div>
+</div>
+</section>
+
+<div class="rating"><!--
+   --><a href="#5" title="Donner 5 étoiles">☆</a><!--
+   --><a href="#4" title="Donner 4 étoiles">☆</a><!--
+   --><a href="#3" title="Donner 3 étoiles">☆</a><!--
+   --><a href="#2" title="Donner 2 étoiles">☆</a><!--
+   --><a href="#1" title="Donner 1 étoile">☆</a>
+</div>
+  {% endblock %}

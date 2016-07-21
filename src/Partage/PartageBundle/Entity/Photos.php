@@ -41,16 +41,18 @@ class Photos
      * @ORM\Column(name="imageName", type="string", length=255)
      */
     private $imageName;
+
     /**
-         * @ORM\Column(type="datetime")
-         *
-         * @var \DateTime
-         */
-        private $updatedAt;
-        /**
-          * @ORM\ManyToMany(targetEntity="Atelier")
-          */
-          private $atelier;
+    * @ORM\Column(type="datetime")
+    *
+    * @var \DateTime$
+    */
+    private $updatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Atelier", inversedBy="photos")
+     */
+    private $atelier;
 
     /**
      * Get id
@@ -185,5 +187,19 @@ class Photos
     public function getAtelier()
     {
         return $this->atelier;
+    }
+
+    /**
+     * Set atelier
+     *
+     * @param \Partage\PartageBundle\Entity\Atelier $atelier
+     *
+     * @return Photos
+     */
+    public function setAtelier(\Partage\PartageBundle\Entity\Atelier $atelier = null)
+    {
+        $this->atelier = $atelier;
+
+        return $this;
     }
 }

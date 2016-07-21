@@ -1,12 +1,35 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+<div  class = "liste">
+  <div class="container">
+<table class="table">
+       <thead class="thead-inverse">
+       <tr>
+           <th>Nom de l'atelier</th>
+           <th>Photos</th>
 
-{% for photos in galeriephoto %}
 
-<img src="images/products/{{photos.imageName}}"/>
+       </tr>
+       </thead>
+       <tbody>
+{% for atelier in atelier %}
+
+
+<tr>
+
+    <td>{{ atelier.nom }}</td>
+    <td><a href= "{{ path ('voir',{'id': atelier.id}) }}"><input type="button" name="name" value="Voir les photos"></a></td>
+
+
+</tr>
+
 
 {% endfor %}
+</tbody>
+</table>
+</div>
+</div>
 
 
 {% endblock %}

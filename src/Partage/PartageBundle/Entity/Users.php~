@@ -37,7 +37,6 @@ class Users extends BaseUser
     private $prenom;
 
 
-
     protected $email;
 
     /**
@@ -55,28 +54,28 @@ class Users extends BaseUser
     private $tel;
 
     /**
-    * @ORM\OneToMany(targetEntity="Atelier", mappedBy="user")
-    */
-    protected $atelier;
+     * @ORM\OneToMany(targetEntity="Atelier", mappedBy="user")
+     */
+    private $atelier;
 
 
-        /**
-         * @ORM\OneToMany(targetEntity="Participation", mappedBy="users")
-          * @ORM\JoinColumn(name="users_id", referencedColumnName="id")
-         */
+    /**
+     * @ORM\OneToMany(targetEntity="Participation", mappedBy="user")
+     * @ORM\JoinColumn(name="users_id", referencedColumnName="id")
+     */
 
-         private $participation;
-      /**
- * @ORM\OneToMany(targetEntity="StatutAtelier", mappedBy="user")
- */
+    private $participation;
+    /**
+     * @ORM\OneToMany(targetEntity="StatutAtelier", mappedBy="user")
+     */
 
- private $statut;
+    private $statut;
 
     public function __construct()
-        {
-            parent::__construct();
-            // your own logic
-        }
+    {
+        parent::__construct();
+        // your own logic
+    }
 
 
     /**
@@ -209,9 +208,6 @@ class Users extends BaseUser
     {
         return $this->atelier;
     }
-
-
-
 
 
     /**
