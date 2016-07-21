@@ -26,8 +26,7 @@ class AtelierController extends Controller
  public function indexAction()
  {
    $em = $this->getDoctrine()->getManager();
-   $atelier = $em->getRepository('PartagePartageBundle:Atelier')->findAll();
-   $user = $this->getUser();
+   $atelier = $em->getRepository('PartagePartageBundle:Atelier')->findBy(array('available'=> 1));
 
      return $this->render('PartagePartageBundle:atelier:indexAtelier.html.twig', array(
        'atelier' => $atelier,
@@ -84,8 +83,8 @@ class AtelierController extends Controller
     $em = $this->getDoctrine()->getManager();
     $em->persist($statut);
     $em->persist($atelier);
-
     $em->flush();
+
     return $this->render('PartagePartageBundle:Default:atelierAccepte.html.twig',  array('id' => $atelier->getId()
   ));
 }

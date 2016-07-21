@@ -5,6 +5,9 @@
       <table class="table">
     <thead>
       <tr>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>Tel</th>
         <th>Nom de l'atelier</th>
         <th>Date</th>
         <th>Heure</th>
@@ -15,9 +18,13 @@
 
       {% for atelier in ateliers %}
 
+
       {% for item in atelier.participations %}
 
         <tr>
+    <td>{{item.user.nom}}</td>
+    <td>{{item.user.adresse}}</td>
+    <td>{{item.user.tel}}</td>
     <td>{{item.atelier.nom}}</td>
     <td>{{item.date|date("m/d/Y")}}</td>
     <td>{{item.heure|date("h:i:s")}}</td>

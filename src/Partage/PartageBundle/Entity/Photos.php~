@@ -47,7 +47,10 @@ class Photos
          * @var \DateTime
          */
         private $updatedAt;
-
+        /**
+          * @ORM\ManyToMany(targetEntity="Atelier")
+          */
+          private $atelier;
 
     /**
      * Get id
@@ -117,5 +120,70 @@ class Photos
     public function getImageName()
     {
         return $this->imageName;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Photos
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->atelier = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add atelier
+     *
+     * @param \Partage\PartageBundle\Entity\Atelier $atelier
+     *
+     * @return Photos
+     */
+    public function addAtelier(\Partage\PartageBundle\Entity\Atelier $atelier)
+    {
+        $this->atelier[] = $atelier;
+
+        return $this;
+    }
+
+    /**
+     * Remove atelier
+     *
+     * @param \Partage\PartageBundle\Entity\Atelier $atelier
+     */
+    public function removeAtelier(\Partage\PartageBundle\Entity\Atelier $atelier)
+    {
+        $this->atelier->removeElement($atelier);
+    }
+
+    /**
+     * Get atelier
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAtelier()
+    {
+        return $this->atelier;
     }
 }

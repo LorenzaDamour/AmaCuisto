@@ -31,6 +31,7 @@ class ParticipationController extends Controller
   $user->getId();
   $participation->setUser($user);
   $atelier= $this->getDoctrine()->getRepository(Atelier::class)->find($id);
+
   $participation->setUser($user);
   $participation->setAtelier($atelier);
 

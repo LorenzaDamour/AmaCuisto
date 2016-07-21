@@ -23,7 +23,7 @@ class PhotosController extends Controller
     if ($form->isSubmitted() && $form->isValid()) {
       // Get connected user
       $user = $this->get('security.token_storage')->getToken()->getUser();
-      // Set user for report, save to database and redirect to homepage
+
 
       $em = $this->getDoctrine()->getEntityManager();
       $em->persist($photos);
@@ -47,6 +47,7 @@ class PhotosController extends Controller
 $photos = $this->getDoctrine()->getRepository(Photos::class)->findAll();
 return $this->render('PartagePartageBundle:Photos:galerie.html.twig', array(
   'galeriephoto' => $photos,
+
 ));
 
 
