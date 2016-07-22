@@ -258,3 +258,8 @@ section.atelier {
      vertical-align:inherit;
     border-top: 1px solid #ddd;
 }
+
+a.accepter {
+    margin-right: 20px;
+    color: #1abc9c;
+}

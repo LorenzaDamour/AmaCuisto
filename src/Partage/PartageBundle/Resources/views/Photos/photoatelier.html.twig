@@ -1,14 +1,20 @@
 {% extends "base.html.twig" %}
 {% block body %}
+<div class="container">
 <div class="imagesatelier">
   <h1 class="titre">Photos des ateliers </h1>
+
 {% for photoos in galeriephoto %}
 
-<img src="/images/products/{{photoos.imageName}}"style="width:200px; height:250px"/>
-<td><a href= "{{ path ('photos_delete' ,{'id': photoos.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
 
+<td><img src="/images/products/{{photoos.imageName}}"style="width:200px; height:250px"/></td>
+
+
+
+<!--<td><a href= "{{ path ('photos_delete' ,{'id': photoos.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>-->
 
 {% endfor %}
+
 </div>
 <section id="formulaire">
   <div class="container">
@@ -24,8 +30,8 @@
 
 
       <div>
-        <input type="submit" class="btn btn-success" value="Valider"/>
-      </div>
+        <button class="button is-grapefruit" id ="envoyer" type="submit" >Valider</button></div>
+
     {{ form_end(form) }}
 </div>
 </div>
@@ -38,5 +44,5 @@
 --><a href="#2" title="Donner 2 étoiles">☆</a><!--
 --><a href="#1" title="Donner 1 étoile">☆</a>
 </div>
-
+</div>
   {% endblock %}

@@ -6,8 +6,8 @@
 <table class="table">
        <thead class="thead-inverse">
        <tr>
-           <th>Nom de l'atelier</th>
-           <th>Photos</th>
+           <th class="text-center">Nom de l'atelier</th>
+
 
 
        </tr>
@@ -18,8 +18,8 @@
 
 <tr>
 
-    <td>{{ atelier.nom }}</td>
-    <td><a href= "{{ path ('voir',{'id': atelier.id}) }}"><input type="button" name="name" class="btn btn-success" value="Voir les photos"></a></td>
+    <td class="nomatelier text-center">{{ atelier.nom }}</td>
+    <td><a href= "{{ path ('voir',{'id': atelier.id}) }}"><button class="button is-turquoise" id ="envoyer" type="submit" >Voir les photos</button></a></td>
 
 
 </tr>
