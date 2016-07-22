@@ -1,9 +1,145 @@
+.navbar-default {
+    background-color: rgb(205, 0, 58);
+    border-color: rgb(205, 0, 58);
+    opacity:0.8;
+}
+.navbar-default .navbar-brand {
+    color: #fcf8e3;
+    font-family: 'Pacifico', cursive;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #fcf8e3;
+
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color:white;
+    color:rgb(205, 0, 58);
+    opacity:0.8;
+}
+/* Carousel */
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+.carousel-fade .carousel-inner .item {
+    opacity: 0;
+    transition-property: opacity;
+}
+.carousel-fade .carousel-inner .active {
+    opacity: 1;
+}
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+.carousel-fade .carousel-control {
+    z-index: 2;
+}
+@media all and (transform-3d),
+(-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+.item:nth-child(1) {
+    background: url(../images/cuisine1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.item:nth-child(2) {
+    background: url(../images/cuisine2.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.item:nth-child(3) {
+    background: url(../images/cuisine3.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.item:nth-child(4) {
+    background: url(../images/cuisine4.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.item:nth-child(5) {
+    background: url(../images/cuisine5.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.item:nth-child(6) {
+    background: url(../images/cuisine6.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.carousel {
+    z-index: -99;
+}
+.carousel .item {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+
+.title {
+  text-align: center;
+  margin-top: 20%;
+  padding: 10px;
+  color:black;
+ font-family: 'Pacifico', cursive;
+    background-color: white;
+    opacity:0.6;
+}
+
+.title p  {
+    font-size: 25px;
+}
+
+.title h1 {
+    font-size:50px;
+}
 form {
 
 margin-top: 100px;
 }
 
-section#showAtelier {
+section#Atelier {
     margin-top: 100px;
 }
 
@@ -71,3 +207,54 @@ section.atelier {
  i.fa.fa-trash{
    font-size: 30px;
  }
+
+/* Atelier */
+
+ body {
+    background-color:#EFE4E4;
+
+}
+
+.titre {
+  text-align: center;
+  padding: 10px;
+  color:black;
+ font-family: 'Pacifico', cursive;
+    background-color: white;
+    opacity:0.6;
+}
+
+.button {
+   border: none;
+   text-align: center;
+   padding: 1.2vw 3vw 1vw;
+   border-radius: 0.2vw;
+   font-weight: bold;
+   text-transform: uppercase;
+   margin: 1.3vw;
+   outline: none;
+   cursor: pointer;
+   transition: all .15s;
+   color: white;
+}
+.is-grapefruit {
+   background: #ED5565 ;
+   box-shadow: 0 .4vw 0 hsl(354, 67%, 49%);
+}
+
+
+.is-turquoise {
+   background: #1abc9c ;
+   box-shadow: 0 .4vw 0 hsl(168, 76%, 30%);
+}
+
+.is-turquoise:hover {
+   background: #16a085 ;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+     vertical-align:inherit;
+    border-top: 1px solid #ddd;
+}

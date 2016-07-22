@@ -2,10 +2,10 @@
 
 {% block body %}
 
-<section id="showAtelier">
+<section id="Atelier">
   <div class="container">
 
-        <h1 class="text-center">Liste des ateliers</h1>
+        <h1 class="titre">Liste des ateliers</h1>
         <table class="table">
                <thead class="thead-inverse">
                <tr>
@@ -13,7 +13,7 @@
                    <th>Equipements</th>
                    <th>Ingrédients</th>
                    <th>Tarif</th>
-                   <th>Participer</th>
+                   
                </tr>
                </thead>
                <tbody>
@@ -33,9 +33,12 @@
     <td>{{ atelier.tarif}}</td>
 
 
-  <td><a href= "{{ path ('participation_new' ,{'id': atelier.id}) }}"><input type="button" name="name" class="btn btn-success" value="participer"></a></td>
+  <td><a href= "{{ path ('participation_new' ,{'id': atelier.id}) }}"><button class="button is-turquoise" id ="envoyer" type="submit" >Participer</button> </a></td>
+       </div>
 
-    <td><a href= "{{ path ('atelier_edit' ,{'id': atelier.id}) }}"><input type="button" name="name" class="btn btn-danger" value="modifier"></a></td>
+
+    <td><a href= "{{ path ('atelier_edit' ,{'id': atelier.id}) }}"><button class="button is-grapefruit" id ="envoyer" type="submit" >Modifier</button>
+</a></td>
 
     <td><a href= "{{ path ('atelier_delete' ,{'id': atelier.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
 

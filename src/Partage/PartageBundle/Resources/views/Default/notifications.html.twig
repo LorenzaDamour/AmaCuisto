@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 <div class="container interesse">
-      <h1 class="text-center">Personnes intéressées</h1>
+      <h1 class="titre">Personnes intéressées</h1>
       <table class="table">
     <thead>
       <tr>
@@ -33,7 +33,7 @@
 <td>
       <a href="{{ path ('atelier_accepte', {'id' : atelier.id, 'atelierId':atelier.id }) }}" class="accepter"><i class="fa fa-check" aria-hidden="true"></i></a>
       <a href="{{ path ('atelier_refuse', {'id' : atelier.id, 'atelierId':atelier.id }) }}" class="accepter"><i class="fa fa-times" aria-hidden="true"></i> </a></td>
-    
+
   </tr>
 
       {% endfor %}
